@@ -1,0 +1,27 @@
+{
+  "name": "@rs-box/ez-flow",
+  "version": "1.0.0",
+  "description": "Library for a workflow engine",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rstanziale/ez-flow.git"
+  },
+  "keywords": [
+    "workflow",
+    "typescript"
+  ],
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "author": "Roberto B. Stanziale",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
