@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "commonjs",
+    "outDir": "dist",
+    "target": "ES2020",
+    "module": "CommonJS",
+    "noImplicitAny": true,
     "declaration": true,
-    "outDir": "lib",
     "strict": true,
     "removeComments": true
   },
-  "include": ["src/**/*"]
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

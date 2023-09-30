@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+# Changes is for commits that should not be displayed in the changelog file
+if ! head -1 "$1" | grep -qE "^(feat|fix|chore|docs|test|style|refactor|perf|build|ci|revert|Changes)(\(.+?\))?: .{1,}$"; then
+    echo "[ERROR] Aborting commit. Your commit message is invalid." >&2
+    exit 1
+fi
+if ! head -1 "$1" | grep -qE "^.{1,88}$"; then
+    echo "[ERROR] Aborting commit. Your commit message is too long." >&2
+    exit 1
+fi
