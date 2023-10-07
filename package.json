@@ -16,14 +16,15 @@
     "prepare": "husky install",
     "build": "tsc"
   },
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "author": "Roberto B. Stanziale",
   "license": "MIT",
   "devDependencies": {
+    "@types/uuid": "^9.0.4",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
     "eslint": "^8.50.0",
@@ -36,5 +37,8 @@
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "uuid": "^9.0.1"
   }
 }
