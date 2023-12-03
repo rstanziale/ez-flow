@@ -11,18 +11,22 @@
     "typescript"
   ],
   "scripts": {
-    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
+    "build": "tsc",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
-    "prepare": "husky install",
-    "build": "tsc"
+    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
+    "prepare": "husky install"
   },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "doc"
   ],
   "author": "Roberto B. Stanziale",
   "license": "MIT",
+  "dependencies": {
+    "uuid": "^9.0.1"
+  },
   "devDependencies": {
     "@types/uuid": "^9.0.4",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
@@ -37,8 +41,5 @@
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
-  },
-  "dependencies": {
-    "uuid": "^9.0.1"
   }
 }
