@@ -1,6 +1,6 @@
 import { LibUtil } from '../utils/lib-util';
 import { DefaultWorkReport } from '../work/default-work-report';
-import { NoOpWork } from '../work/no.op.work';
+import { NoOpWork } from '../work/no-op-work';
 import { Predicate } from '../work/predicate';
 import { Work } from '../work/work';
 import { WorkContext } from '../work/work-context';
