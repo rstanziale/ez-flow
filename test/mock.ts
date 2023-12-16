@@ -98,7 +98,6 @@ export class PrintDateCount implements Work {
 
   async call(workContext: WorkContext): Promise<WorkReport> {
     const date: string = new Date().toISOString();
-    console.log(date);
     workContext.set(WorkContext.CTX_RESULT, date);
     return new DefaultWorkReport(WorkStatus.COMPLETED, workContext);
   }
