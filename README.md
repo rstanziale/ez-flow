@@ -4,6 +4,12 @@ It's a library implementing a simple workflow engine.
 
 This library was heavily inspired to [j-easy/easy-flows](https://github.com/j-easy/easy-flows) in the Java world.
 
+## Installation
+
+```bash
+npm install @rs-box/ez-flow
+```
+
 ## Usage
 
 A **Workflow** is a collection of **Work Units** must be run tu achieve a given purpose.
@@ -25,12 +31,32 @@ In this library are actually available the following flow constructs:
 
 ### How to apply a flow?
 
-Suppose you have defined a work unit called **PrintWork** that implements _Work_. It takes a _message_ and its _call_ method prints it:<br/>
+Suppose you have defined a work unit called **PrintMessageWork** that implements _Work_. It takes a _message_ and its _call_ method prints it:<br/>
 
 ```typescript
-async call(WorkContext workContext) {
-    console.log(message);
+import {
+  Work,
+  WorkContext,
+  WorkReport,
+  DefaultWorkReport,
+  WorkStatus,
+} from '@rs-box/ez-flow';
+
+export class PrintMessageWork implements Work {
+  private message: string;
+
+  constructor(message: string) {
+    this.message = message;
+  }
+
+  getName() {
+    return 'print message';
+  }
+
+  async call(workContext: WorkContext): Promise<WorkReport> {
+    console.log(this.message);
     return new DefaultWorkReport(WorkStatus.COMPLETED, workContext);
+  }
 }
 ```
 
@@ -52,6 +78,19 @@ This workflow can be illustrated as follows:
 This is a code snippet for the above example:
 
 ```typescript
+import {
+  ConditionalFlow,
+  SequentialFlow,
+  RepeatFlow,
+  ParallelFlow,
+  WorkFlowEngine,
+  WorkStatus,
+  WorkContext,
+  WorkFlowEngineBuilder,
+  WorkReport,
+} from '@rs-box/ez-flow';
+import { PrintMessageWork } from './print-message-works';
+
 // 1. Build work units
 const work1: PrintMessageWork = new PrintMessageWork('foo');
 const work2: PrintMessageWork = new PrintMessageWork('hello');
@@ -88,6 +127,7 @@ const workContext = new WorkContext();
 
 // 3. Run workflow
 const workFlowEngine: WorkFlowEngine = WorkFlowEngineBuilder.newBuilder().build();
+
 workFlowEngine.run(workflow, workContext).then(
   (finalReport: WorkReport) => {
     if (finalReport.getWorkStatus() === WorkStatus.COMPLETED) {
@@ -95,7 +135,7 @@ workFlowEngine.run(workflow, workContext).then(
       console.log('Completed successfully');
     } else {
       // There was a failure
-      let err = finalReport.getError();
+      const err = finalReport.getError();
       // Show error...
       console.error('error: ', err);
     }
