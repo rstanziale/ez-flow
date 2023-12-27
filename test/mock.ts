@@ -1,4 +1,6 @@
 import { DefaultWorkReport } from '../src/work/default-work-report';
+import { BrokenWorkReport } from '../src/work/broken-work-report';
+import { FailureWorkReport } from '../src/work/failure-work-report';
 import { Predicate } from '../src/work/predicate';
 import { Work } from '../src/work/work';
 import { WorkContext } from '../src/work/work-context';
@@ -20,6 +22,26 @@ export class AlwaysFalsePredicate implements Predicate {
 export class CompletedPredicate implements Predicate {
   async apply(workReport: WorkReport) {
     return workReport.getWorkStatus() === WorkStatus.COMPLETED;
+  }
+}
+
+export class BrokenWork implements Work {
+  getName() {
+    return 'broken work';
+  }
+
+  async call(workContext: WorkContext): Promise<WorkReport> {
+    return new BrokenWorkReport(workContext, new Error('workflow interrupted'));
+  }
+}
+
+export class ErrorWork implements Work {
+  getName() {
+    return 'error work';
+  }
+
+  async call(workContext: WorkContext): Promise<WorkReport> {
+    return new FailureWorkReport(workContext, new Error('workflow error'));
   }
 }
 
@@ -99,6 +121,17 @@ export class PrintDateCount implements Work {
   async call(workContext: WorkContext): Promise<WorkReport> {
     const date: string = new Date().toISOString();
     workContext.set(WorkContext.CTX_RESULT, date);
+    return new DefaultWorkReport(WorkStatus.COMPLETED, workContext);
+  }
+}
+
+export class ContextWork implements Work {
+  getName() {
+    return 'context work';
+  }
+
+  async call(workContext: WorkContext): Promise<WorkReport> {
+    workContext.set('test', 'this is a test');
     return new DefaultWorkReport(WorkStatus.COMPLETED, workContext);
   }
 }

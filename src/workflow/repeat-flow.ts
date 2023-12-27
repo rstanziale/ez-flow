@@ -25,7 +25,7 @@ export class RepeatFlow extends AbstractWorkFlow {
   constructor(
     name: string,
     private work: Work,
-    private times: number = 0,
+    private times: number,
     private predicate?: Predicate,
   ) {
     super(name);
@@ -47,28 +47,6 @@ export class RepeatFlow extends AbstractWorkFlow {
   //
 
   /**
-   * Execute a loop until predicate becomes FAILED
-   * @param workContext work context
-   * @returns work report promise
-   */
-  private async doLoop(workContext: WorkContext) {
-    let workReport: WorkReport;
-
-    // if there is no explicit predicate then base the predicate on the state of execution (COMPLETED, FAILED)
-    if (!this.predicate) {
-      this.predicate = new WorkReportPredicate();
-    }
-
-    let predicateVal: boolean;
-    do {
-      workReport = await this.work.call(workContext);
-      predicateVal = await this.predicate.apply(workReport);
-    } while (predicateVal);
-
-    return workReport;
-  }
-
-  /**
    * Execute a loop for 'times' times or breaks on failed predicate
    * @param workContext work context
    * @returns work report promise
@@ -88,6 +66,28 @@ export class RepeatFlow extends AbstractWorkFlow {
     }
 
     return workReport!;
+  }
+
+  /**
+   * Execute a loop until predicate becomes FAILED
+   * @param workContext work context
+   * @returns work report promise
+   */
+  private async doLoop(workContext: WorkContext) {
+    let workReport: WorkReport;
+
+    // if there is no explicit predicate then base the predicate on the state of execution (COMPLETED, FAILED)
+    if (!this.predicate) {
+      throw new Error('[ERROR] Aborting repeat flow. No predicate defined');
+    }
+
+    let predicateVal: boolean;
+    do {
+      workReport = await this.work.call(workContext);
+      predicateVal = await this.predicate.apply(workReport);
+    } while (predicateVal);
+
+    return workReport;
   }
 
   //

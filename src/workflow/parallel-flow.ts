@@ -48,7 +48,7 @@ export class ParallelFlow extends AbstractWorkFlow {
    * @param workContext work context
    * @returns work report promise
    */
-  async execWork(work: Work, workContext: WorkContext) {
+  private async execWork(work: Work, workContext: WorkContext) {
     return work.call(workContext);
   }
 

@@ -1,9 +1,10 @@
-import { PrintDateCount } from '../mock';
+import { ContextWork, ErrorWork, PrintDateCount } from '../mock';
 import { ParallelFlow } from '../../src/workflow/parallel-flow';
 import { WorkContext } from '../../src/work/work-context';
 import { WorkFlowEngine } from '../../src/engine/work-flow-engine';
 import { WorkFlowEngineBuilder } from '../../src/engine/work-flow-engine-builder';
-import { WorkReport } from '../../src/work/work-report';
+import { ParallelWorkReport } from '../../src/work/parallel-work-report';
+import { WorkStatus } from '../../src/work/work-status';
 
 let workFlowEngine: WorkFlowEngine;
 
@@ -18,20 +19,60 @@ describe('Parallel flow', () => {
     const spyWork = jest.spyOn(work, 'call');
 
     const parallelFlow = ParallelFlow.Builder.newFlow()
-      .withWorks([work, work, work])
+      .withWorks([work, work])
+      .addWork(work)
       .build();
 
     const workContext = new WorkContext();
-    const workReport: WorkReport = await workFlowEngine.run(
-      parallelFlow,
-      workContext,
-    );
+    const workReport = await workFlowEngine.run(parallelFlow, workContext);
     const resultList: string[] = workReport
       .getWorkContext()
       .get(WorkContext.CTX_RESULT_LIST);
     const everyEquals: boolean = resultList.every(r => r === resultList[0]);
 
+    expect((workReport as ParallelWorkReport).getError().length).toBe(0);
+    expect(workReport.getWorkContext().isResultSingle()).toBeFalsy();
     expect(spyWork).toHaveBeenCalledTimes(3);
+    expect(everyEquals).toBeTruthy();
+  });
+
+  it('test exectute without units', async () => {
+    const work = new ContextWork();
+    const parallelFlow = ParallelFlow.Builder.newFlow()
+      .withWorks([work, work])
+      .build();
+
+    const workContext = new WorkContext();
+    const workReport = await workFlowEngine.run(parallelFlow, workContext);
+    const result = workReport.getWorkContext();
+
+    expect((workReport as ParallelWorkReport).getError().length).toBe(0);
+    expect(result.asMap().size).not.toBe(0);
+  });
+
+  it('test exectute with errors', async () => {
+    const work1 = new PrintDateCount();
+    const work2 = new ContextWork();
+    const errorWork = new ErrorWork();
+
+    const spyWork = jest.spyOn(work1, 'call');
+
+    const parallelFlow = ParallelFlow.Builder.newFlow()
+      .withWorks([work1, work1, work2])
+      .addWork(errorWork)
+      .build();
+
+    const workContext = new WorkContext();
+    const workReport = await workFlowEngine.run(parallelFlow, workContext);
+    const resultList: string[] = workReport
+      .getWorkContext()
+      .get(WorkContext.CTX_RESULT_LIST);
+    const everyEquals: boolean = resultList.every(r => r === resultList[0]);
+
+    expect((workReport as ParallelWorkReport).getError().length).toBe(1);
+    expect(workReport.getWorkContext().isResultSingle()).toBeFalsy();
+    expect(workReport.getWorkStatus()).not.toBe(WorkStatus.COMPLETED);
+    expect(spyWork).toHaveBeenCalledTimes(2);
     expect(everyEquals).toBeTruthy();
   });
 });

@@ -19,7 +19,7 @@ export class ParallelWorkReport implements WorkReport {
    * Get error (if any)
    * @returns error
    */
-  getError(): Error | Error[] {
+  getError(): Error[] {
     const errors: Error[] = [];
 
     for (const workReport of this.workReportList) {
@@ -67,8 +67,12 @@ export class ParallelWorkReport implements WorkReport {
   getWorkStatus(): WorkStatus {
     for (const workReport of this.workReportList) {
       const workStatus = workReport.getWorkStatus();
-      if (workStatus === WorkStatus.FAILED || workStatus === WorkStatus.BROKEN)
+      if (
+        workStatus === WorkStatus.FAILED ||
+        workStatus === WorkStatus.BROKEN
+      ) {
         return workStatus;
+      }
     }
 
     return WorkStatus.COMPLETED;

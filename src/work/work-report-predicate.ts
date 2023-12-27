@@ -16,7 +16,6 @@ export class WorkReportPredicate implements Predicate {
    * @return Promise<boolean> true|false
    */
   apply(workReport: WorkReport): Promise<boolean> {
-    // return workReport.getWorkStatus() === WorkStatus.COMPLETED;
     return Promise.resolve(workReport.getWorkStatus() === WorkStatus.COMPLETED);
   }
 }

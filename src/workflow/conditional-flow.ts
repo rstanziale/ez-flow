@@ -1,12 +1,10 @@
 import { LibUtil } from '../utils/lib-util';
-import { DefaultWorkReport } from '../work/default-work-report';
 import { NoOpWork } from '../work/no-op-work';
 import { Predicate } from '../work/predicate';
 import { Work } from '../work/work';
 import { WorkContext } from '../work/work-context';
 import { WorkReport } from '../work/work-report';
 import { WorkReportPredicate } from '../work/work-report-predicate';
-import { WorkStatus } from '../work/work-status';
 import { AbstractWorkFlow } from './abstract-work-flow';
 
 /**
@@ -28,7 +26,7 @@ export class ConditionalFlow extends AbstractWorkFlow {
     name: string,
     private toExecute: Work,
     private nextOnTrue: Work,
-    private nextOnFalse?: Work,
+    private nextOnFalse: Work,
     private predicate?: Predicate,
   ) {
     super(name);
@@ -45,12 +43,8 @@ export class ConditionalFlow extends AbstractWorkFlow {
    */
   async call(workContext: WorkContext) {
     let returnReport: WorkReport;
-    if (this.toExecute != null) {
-      // Executes main work unit
-      returnReport = await this.toExecute.call(workContext);
-    } else {
-      returnReport = new DefaultWorkReport(WorkStatus.COMPLETED, workContext);
-    }
+    // Executes main work unit
+    returnReport = await this.toExecute.call(workContext);
 
     // If there is no explicit predicate, then the predicate is based on the execution state (COMPLETED, FAILED).
     if (!this.predicate) {
@@ -64,7 +58,7 @@ export class ConditionalFlow extends AbstractWorkFlow {
       returnReport = await this.nextOnTrue.call(workContext);
     } else {
       // If it is 'false' and a 'nextOnFalse' unit is specified, then execute it
-      if (this.nextOnFalse && !(this.nextOnFalse instanceof NoOpWork)) {
+      if (!(this.nextOnFalse instanceof NoOpWork)) {
         returnReport = await this.nextOnFalse.call(workContext);
       }
     }

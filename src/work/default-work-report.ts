@@ -41,7 +41,7 @@ export class DefaultWorkReport implements WorkReport {
    * Get error (if any)
    * @returns error
    */
-  getError(): undefined | Error | Error[] {
+  getError(): Error | undefined {
     return this.error;
   }
 }

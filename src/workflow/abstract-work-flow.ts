@@ -1,4 +1,3 @@
-import { LibUtil } from '../utils/lib-util';
 import { WorkContext } from '../work/work-context';
 import { WorkReport } from '../work/work-report';
 import { WorkFlow } from './work-flow';
@@ -14,7 +13,7 @@ export abstract class AbstractWorkFlow implements WorkFlow {
    * Constructor
    * @param name workflow name
    */
-  constructor(private name?: string) {}
+  constructor(private name: string) {}
 
   /**
    * Execute an action on the given context
@@ -28,6 +27,6 @@ export abstract class AbstractWorkFlow implements WorkFlow {
    * @returns work unit name
    */
   getName(): string {
-    return this.name ?? LibUtil.getUUID();
+    return this.name;
   }
 }
