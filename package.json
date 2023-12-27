@@ -1,6 +1,6 @@
 {
   "name": "@rs-box/ez-flow",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Library for a workflow engine",
   "repository": {
     "type": "git",
