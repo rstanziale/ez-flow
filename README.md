@@ -1,5 +1,9 @@
 # ez-flow
 
+[![npm version](https://img.shields.io/npm/v/@rs-box/ez-flow)](https://www.npmjs.com/package/@rs-box/ez-flow)
+[![build status](https://img.shields.io/github/actions/workflow/status/rstanziale/ez-flow/ci.yml)](https://github.com/rstanziale/ez-flow/actions)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/@rs-box/ez-flow?label=Bundle%20Size&link=https://bundlephobia.com/package/@rs-box/ez-flow@latest)
+
 It's a library implementing a simple workflow engine.
 
 This library was heavily inspired to [j-easy/easy-flows](https://github.com/j-easy/easy-flows) in the Java world.
