@@ -22,7 +22,7 @@ export class SequentialFlow extends AbstractWorkFlow {
     name: string,
     private workList: Work[],
   ) {
-    super();
+    super(name);
   }
 
   /**
