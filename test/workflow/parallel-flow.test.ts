@@ -1,3 +1,4 @@
+import { beforeEach, describe, test, expect, vi } from 'vitest';
 import { ContextWork, ErrorWork, PrintDateCount } from '../mock';
 import { ParallelFlow } from '../../src/workflow/parallel-flow';
 import { WorkContext } from '../../src/work/work-context';
@@ -13,10 +14,10 @@ beforeEach(() => {
 });
 
 describe('Parallel flow', () => {
-  it('test exectute', async () => {
+  test('test exectute', async () => {
     const work = new PrintDateCount();
 
-    const spyWork = jest.spyOn(work, 'call');
+    const spyWork = vi.spyOn(work, 'call');
 
     const parallelFlow = ParallelFlow.Builder.newFlow()
       .withWorks([work, work])
@@ -36,7 +37,7 @@ describe('Parallel flow', () => {
     expect(everyEquals).toBeTruthy();
   });
 
-  it('test exectute without units', async () => {
+  test('test exectute without units', async () => {
     const work = new ContextWork();
     const parallelFlow = ParallelFlow.Builder.newFlow()
       .withWorks([work, work])
@@ -50,12 +51,12 @@ describe('Parallel flow', () => {
     expect(result.asMap().size).not.toBe(0);
   });
 
-  it('test exectute with errors', async () => {
+  test('test exectute with errors', async () => {
     const work1 = new PrintDateCount();
     const work2 = new ContextWork();
     const errorWork = new ErrorWork();
 
-    const spyWork = jest.spyOn(work1, 'call');
+    const spyWork = vi.spyOn(work1, 'call');
 
     const parallelFlow = ParallelFlow.Builder.newFlow()
       .withWorks([work1, work1, work2])

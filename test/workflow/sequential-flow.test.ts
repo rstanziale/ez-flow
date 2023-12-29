@@ -1,3 +1,4 @@
+import { beforeEach, describe, test, expect, vi } from 'vitest';
 import { ConcatWordCount, BrokenWork, ErrorWork } from '../mock';
 import { SequentialFlow } from '../../src/workflow/sequential-flow';
 import { WorkContext } from '../../src/work/work-context';
@@ -11,14 +12,14 @@ beforeEach(() => {
 });
 
 describe('Sequential flow', () => {
-  it('test exectute', async () => {
+  test('test exectute', async () => {
     const work1 = new ConcatWordCount('Hello');
     const work2 = new ConcatWordCount(', ');
     const work3 = new ConcatWordCount('World');
 
-    const spyWork1 = jest.spyOn(work1, 'call');
-    const spyWork2 = jest.spyOn(work2, 'call');
-    const spyWork3 = jest.spyOn(work3, 'call');
+    const spyWork1 = vi.spyOn(work1, 'call');
+    const spyWork2 = vi.spyOn(work2, 'call');
+    const spyWork3 = vi.spyOn(work3, 'call');
 
     const sequentialFlow = SequentialFlow.Builder.newFlow()
       .withName('sequential flow')
@@ -41,14 +42,14 @@ describe('Sequential flow', () => {
     expect(result).toBe('Hello, World');
   });
 
-  it('test passing multiple units at once', async () => {
+  test('test passing multiple units at once', async () => {
     const work1 = new ConcatWordCount('Hello');
     const work2 = new ConcatWordCount(', ');
     const work3 = new ConcatWordCount('World');
 
-    const spyWork1 = jest.spyOn(work1, 'call');
-    const spyWork2 = jest.spyOn(work2, 'call');
-    const spyWork3 = jest.spyOn(work3, 'call');
+    const spyWork1 = vi.spyOn(work1, 'call');
+    const spyWork2 = vi.spyOn(work2, 'call');
+    const spyWork3 = vi.spyOn(work3, 'call');
 
     const sequentialFlow = SequentialFlow.Builder.newFlow()
       .withWorks([work1, work2, work3])
@@ -68,14 +69,14 @@ describe('Sequential flow', () => {
     expect(result).toBe('Hello, World');
   });
 
-  it('test passing with errors', async () => {
+  test('test passing with errors', async () => {
     const work1 = new ConcatWordCount('Hello');
     const work2 = new BrokenWork();
     const work3 = new ConcatWordCount('World');
 
-    const spyWork1 = jest.spyOn(work1, 'call');
-    const spyWork2 = jest.spyOn(work2, 'call');
-    const spyWork3 = jest.spyOn(work3, 'call');
+    const spyWork1 = vi.spyOn(work1, 'call');
+    const spyWork2 = vi.spyOn(work2, 'call');
+    const spyWork3 = vi.spyOn(work3, 'call');
 
     const sequentialFlow = SequentialFlow.Builder.newFlow()
       .withWorks([work1, work2, work3])
@@ -94,14 +95,14 @@ describe('Sequential flow', () => {
     expect(result).not.toBe('Hello, World');
   });
 
-  it('test passing with errors', async () => {
+  test('test passing with errors', async () => {
     const work1 = new ConcatWordCount('Hello');
     const work2 = new ErrorWork();
     const work3 = new ConcatWordCount('World');
 
-    const spyWork1 = jest.spyOn(work1, 'call');
-    const spyWork2 = jest.spyOn(work2, 'call');
-    const spyWork3 = jest.spyOn(work3, 'call');
+    const spyWork1 = vi.spyOn(work1, 'call');
+    const spyWork2 = vi.spyOn(work2, 'call');
+    const spyWork3 = vi.spyOn(work3, 'call');
 
     const sequentialFlow = SequentialFlow.Builder.newFlow()
       .withWorks([work1, work2, work3])

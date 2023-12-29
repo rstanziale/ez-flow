@@ -1,3 +1,4 @@
+import { beforeEach, describe, test, expect } from 'vitest';
 import {
   AggregateWordCountsWork,
   CompletedPredicate,
@@ -21,7 +22,7 @@ beforeEach(() => {
 });
 
 describe('WorkFlow engine', () => {
-  it('compose workflow from separate flows and execute it', async () => {
+  test('compose workflow from separate flows and execute it', async () => {
     const work1 = new PrintMessageWork('foo');
     const work2 = new PrintMessageWork('hello');
     const work3 = new PrintMessageWork('world');
@@ -57,7 +58,7 @@ describe('WorkFlow engine', () => {
     expect(workReport.getError()).not.toBeTruthy();
   });
 
-  it('define workflow inline and execute it', async () => {
+  test('define workflow inline and execute it', async () => {
     const work1 = new PrintMessageWork('foo');
     const work2 = new PrintMessageWork('hello');
     const work3 = new PrintMessageWork('world');
@@ -93,7 +94,7 @@ describe('WorkFlow engine', () => {
     expect(workReport.getError()).not.toBeTruthy();
   });
 
-  it('use work context to pass initial parameters and share data between work units', async () => {
+  test('use work context to pass initial parameters and share data between work units', async () => {
     const work1 = new WordCountWork(1);
     const work2 = new WordCountWork(2);
     const work3 = new AggregateWordCountsWork();

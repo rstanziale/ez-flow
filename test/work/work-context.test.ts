@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { WorkContext } from '../../src/work/work-context';
 
 let work: WorkContext;

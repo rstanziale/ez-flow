@@ -1,3 +1,4 @@
+import { beforeEach, describe, test, expect, vi } from 'vitest';
 import { WorkFlowEngine } from '../../src/engine/work-flow-engine';
 import { WorkFlowEngineBuilder } from '../../src/engine/work-flow-engine-builder';
 import { WorkContext } from '../../src/work/work-context';
@@ -11,11 +12,11 @@ beforeEach(() => {
 });
 
 describe('Repeat flow', () => {
-  it('test repeat until', async () => {
+  test('test repeat until', async () => {
     const work = new PrintMessageWork('Hello');
     const predicate = new AlwaysFalsePredicate();
 
-    const spyWork = jest.spyOn(work, 'call');
+    const spyWork = vi.spyOn(work, 'call');
 
     const repeatFlow = RepeatFlow.Builder.newFlow()
       .withWork(work)
@@ -28,10 +29,10 @@ describe('Repeat flow', () => {
     expect(spyWork).toHaveBeenCalledTimes(1);
   });
 
-  it('test repeat times', async () => {
+  test('test repeat times', async () => {
     const work = new PrintMessageWork('Hello');
 
-    const spyWork = jest.spyOn(work, 'call');
+    const spyWork = vi.spyOn(work, 'call');
 
     const repeatFlow = RepeatFlow.Builder.newFlow()
       .withWork(work)
@@ -44,10 +45,10 @@ describe('Repeat flow', () => {
     expect(spyWork).toHaveBeenCalledTimes(3);
   });
 
-  it('test repeat times with broken units', async () => {
+  test('test repeat times with broken units', async () => {
     const work = new BrokenWork();
 
-    const spyWork = jest.spyOn(work, 'call');
+    const spyWork = vi.spyOn(work, 'call');
 
     const repeatFlow = RepeatFlow.Builder.newFlow()
       .withWork(work)
@@ -60,11 +61,11 @@ describe('Repeat flow', () => {
     expect(spyWork).toHaveBeenCalledTimes(1);
   });
 
-  it('test repeat until without defined work', () => {
+  test('test repeat until without defined work', () => {
     expect(() => RepeatFlow.Builder.newFlow().withTimes(1).build()).toThrow();
   });
 
-  it('test repeat without predicate', async () => {
+  test('test repeat without predicate', async () => {
     const work = new PrintMessageWork('Hello');
 
     const repeatFlow = RepeatFlow.Builder.newFlow().withWork(work).build();

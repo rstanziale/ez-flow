@@ -1,3 +1,4 @@
+import { beforeEach, describe, test, expect } from 'vitest';
 import { NoOpWork } from '../../src/work/no-op-work';
 import { WorkContext } from '../../src/work/work-context';
 import { WorkReport } from '../../src/work/work-report';

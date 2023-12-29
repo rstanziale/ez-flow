@@ -1,3 +1,4 @@
+import { beforeEach, describe, test, expect, vi } from 'vitest';
 import { AlwaysFalsePredicate, PrintMessageWork } from '../mock';
 import { ConditionalFlow } from '../../src/workflow/conditional-flow';
 import { WorkContext } from '../../src/work/work-context';
@@ -11,14 +12,14 @@ beforeEach(() => {
 });
 
 describe('Conditional flow', () => {
-  it('call on predicate success', async () => {
+  test('call on predicate success', async () => {
     const work1 = new PrintMessageWork('Start');
     const work2 = new PrintMessageWork('Then');
     const work3 = new PrintMessageWork('Else');
 
-    const spyWork1 = jest.spyOn(work1, 'call');
-    const spyWork2 = jest.spyOn(work2, 'call');
-    const spyWork3 = jest.spyOn(work3, 'call');
+    const spyWork1 = vi.spyOn(work1, 'call');
+    const spyWork2 = vi.spyOn(work2, 'call');
+    const spyWork3 = vi.spyOn(work3, 'call');
 
     const conditionalFlow = ConditionalFlow.Builder.newFlow()
       .withWork(work1)
@@ -35,15 +36,15 @@ describe('Conditional flow', () => {
     expect(spyWork3).not.toHaveBeenCalled();
   });
 
-  it('call on predicate failure', async () => {
+  test('call on predicate failure', async () => {
     const work1 = new PrintMessageWork('Start');
     const work2 = new PrintMessageWork('Then');
     const work3 = new PrintMessageWork('Else');
     const predicate = new AlwaysFalsePredicate();
 
-    const spyWork1 = jest.spyOn(work1, 'call');
-    const spyWork2 = jest.spyOn(work2, 'call');
-    const spyWork3 = jest.spyOn(work3, 'call');
+    const spyWork1 = vi.spyOn(work1, 'call');
+    const spyWork2 = vi.spyOn(work2, 'call');
+    const spyWork3 = vi.spyOn(work3, 'call');
 
     const conditionalFlow = ConditionalFlow.Builder.newFlow()
       .withName('conditional flow')
@@ -62,13 +63,13 @@ describe('Conditional flow', () => {
     expect(spyWork3).toHaveBeenCalled();
   });
 
-  it('call on predicate failure without otherwise', async () => {
+  test('call on predicate failure without otherwise', async () => {
     const work1 = new PrintMessageWork('Start');
     const work2 = new PrintMessageWork('Then');
     const predicate = new AlwaysFalsePredicate();
 
-    const spyWork1 = jest.spyOn(work1, 'call');
-    const spyWork2 = jest.spyOn(work2, 'call');
+    const spyWork1 = vi.spyOn(work1, 'call');
+    const spyWork2 = vi.spyOn(work2, 'call');
 
     const conditionalFlow = ConditionalFlow.Builder.newFlow()
       .withName('conditional flow')
@@ -85,15 +86,15 @@ describe('Conditional flow', () => {
     expect(spyWork2).not.toHaveBeenCalled();
   });
 
-  it('call with null work', async () => {
+  test('call with null work', async () => {
     const work1 = new PrintMessageWork('Start');
     const work2 = new PrintMessageWork('Then');
     const work3 = new PrintMessageWork('Else');
     const predicate = new AlwaysFalsePredicate();
 
-    const spyWork1 = jest.spyOn(work1, 'call');
-    const spyWork2 = jest.spyOn(work2, 'call');
-    const spyWork3 = jest.spyOn(work3, 'call');
+    const spyWork1 = vi.spyOn(work1, 'call');
+    const spyWork2 = vi.spyOn(work2, 'call');
+    const spyWork3 = vi.spyOn(work3, 'call');
 
     const conditionalFlow = ConditionalFlow.Builder.newFlow()
       .withName('conditional flow')
