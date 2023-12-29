@@ -76,7 +76,6 @@ export class RepeatFlow extends AbstractWorkFlow {
   private async doLoop(workContext: WorkContext) {
     let workReport: WorkReport;
 
-    // if there is no explicit predicate then base the predicate on the state of execution (COMPLETED, FAILED)
     if (!this.predicate) {
       throw new Error('[ERROR] Aborting repeat flow. No predicate defined');
     }

@@ -1,7 +1,3 @@
-/*
- * Public API Surface of rng-flow
- */
-
 // Work items
 export * from './work/broken-work-report';
 export * from './work/default-work-report';
