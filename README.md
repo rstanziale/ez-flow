@@ -93,7 +93,7 @@ import {
   WorkFlowEngineBuilder,
   WorkReport,
 } from '@rs-box/ez-flow';
-import { PrintMessageWork } from './print-message-work.ts';
+import { PrintMessageWork } from './print-message-work';
 
 // 1. Build work units
 const work1: PrintMessageWork = new PrintMessageWork('foo');
