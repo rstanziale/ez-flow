@@ -77,4 +77,12 @@ export class ParallelWorkReport implements WorkReport {
 
     return WorkStatus.COMPLETED;
   }
+
+  /**
+   * Get work reports data
+   * @returns list of current work reports
+   */
+  getWorkList(): WorkReport[] {
+    return this.workReportList;
+  }
 }
