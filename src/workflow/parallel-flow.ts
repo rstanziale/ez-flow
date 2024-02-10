@@ -24,32 +24,12 @@ export class ParallelFlow extends AbstractWorkFlow {
    * @returns work report promise
    */
   async call(workContext: WorkContext) {
-    // Starts the parallel execution of work units, each of which returns a promise
-    const workPromises: Promise<WorkReport>[] = [];
-    for (const work of this.workList) {
-      // Because the executions are parallel, a copy of the context is passed for each execution
-      workPromises.push(
-        this.execWork(work, Object.assign(new WorkContext(), workContext)),
-      );
-    }
-
     // Calculates and returns the final state after all operations are completed
-    const workReports: WorkReport[] = await Promise.all(workPromises);
+    const workReports: WorkReport[] = await Promise.all(
+      this.workList.map(work => work.call(workContext)),
+    );
+
     return new ParallelWorkReport(workReports);
-  }
-
-  //
-  // PRIVATE
-  //
-
-  /**
-   * Returns a promise on work unit runnable
-   * @param work work unit
-   * @param workContext work context
-   * @returns work report promise
-   */
-  private async execWork(work: Work, workContext: WorkContext) {
-    return work.call(workContext);
   }
 
   //
