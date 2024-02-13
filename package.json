@@ -38,7 +38,7 @@
     "eslint-plugin-n": "^16.1.0",
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.3",
-    "lint-staged": "^14.0.1",
+    "lint-staged": "^15.2.2",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2",
     "vitest": "^1.1.0"
