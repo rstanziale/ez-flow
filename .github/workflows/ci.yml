@@ -24,6 +24,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - uses: pnpm/action-setup@v4
       with:
-        version: 9
+        version: 8
+        run_install: |
+          - recursive: true
+            args: [--frozen-lockfile, --strict-peer-dependencies]
     - run: npm run build
     - run: npm test
