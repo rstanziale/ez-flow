@@ -15,7 +15,7 @@
     "coverage": "vitest run --coverage",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
-    "prepare": "husky install",
+    "prepare": "husky",
     "release": "standard-version -- --dry-run",
     "test": "vitest --run"
   },
@@ -28,20 +28,20 @@
   "author": "Roberto B. Stanziale",
   "license": "MIT",
   "devDependencies": {
-    "@commitlint/cli": "^19.3.0",
-    "@commitlint/config-conventional": "^19.2.2",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
     "@types/uuid": "^10.0.0",
-    "@typescript-eslint/eslint-plugin": "^7.15.0",
-    "@typescript-eslint/parser": "^7.15.0",
-    "@vitest/coverage-v8": "^2.0.5",
-    "eslint": "^8.57.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.7",
-    "prettier": "^3.3.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
+    "prettier": "^3.4.2",
     "standard-version": "^9.5.0",
-    "typescript": "^5.5.3",
-    "vitest": "^2.0.5"
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   },
   "peerDependencies": {
     "uuid": "^9.0.0"
