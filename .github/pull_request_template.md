@@ -1,8 +1,5 @@
 # Pull Request
 
-## Title
-<!-- Provide a concise and clear title for your pull request -->
-
 ## Type of Change
 <!-- Check the appropriate box that best describes your change -->
 - [ ] feat (new feature)
