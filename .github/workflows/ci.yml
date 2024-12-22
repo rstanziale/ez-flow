@@ -1,5 +1,4 @@
 name: CI workflow
-
 on:
   push:
     branches: [ "main" ]
@@ -8,25 +7,23 @@ on:
 
 jobs:
   build:
-
     runs-on: ${{ matrix.os }}
-
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
         os: [ubuntu-latest, windows-latest, macOS-latest]
-
     steps:
     - uses: actions/checkout@v4
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 9
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-    - uses: pnpm/action-setup@v4
-      with:
-        version: ^9.0.0
-        run_install: |
-          - recursive: true
-            args: [--frozen-lockfile, --strict-peer-dependencies]
-    - run: npm run build
-    - run: npm test
+        cache: 'pnpm'
+    - name: Install dependencies
+      run: pnpm install
+    - name: Run tests
+      run: pnpm test
