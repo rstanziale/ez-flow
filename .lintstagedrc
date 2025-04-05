@@ -1,4 +1,4 @@
 {
-    "*.(js|ts)": ["prettier --ignore-path .gitignore --write", "eslint --ignore-path .eslintignore"],
-    "*.(json)": ["prettier --ignore-path .gitignore --write"]
+  "*.(js|ts)": ["prettier --write", "eslint"],
+  "*.(json)": ["prettier --write"]
 }
