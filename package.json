@@ -28,7 +28,7 @@
   "author": "Roberto B. Stanziale",
   "license": "MIT",
   "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
+    "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.33.0",
