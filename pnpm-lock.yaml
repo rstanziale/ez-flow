@@ -2714,6 +2714,7 @@ snapshots:
       undici-types: 7.10.0
 
   '@types/normalize-package-data@2.4.4': {}
+
   '@typescript-eslint/eslint-plugin@8.41.0(@typescript-eslint/parser@8.46.2(eslint@9.35.0(jiti@2.6.1))(typescript@5.9.2))(eslint@9.35.0(jiti@2.6.1))(typescript@5.9.2)':
     dependencies:
       '@eslint-community/regexpp': 4.12.1
