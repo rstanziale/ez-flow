@@ -28,10 +28,10 @@
     "@commitlint/config-conventional": "^21.2.0",
     "@vitest/coverage-v8": "^4.1.10",
     "husky": "^9.1.7",
-    "lint-staged": "^17.0.8",
+    "lint-staged": "^17.3.0",
     "standard-version": "^9.5.0",
     "typescript": "^7.0.2",
-    "vite": "^8.1.4",
+    "vite": "^8.2.0",
     "vitest": "^4.1.10"
   },
   "peerDependencies": {
