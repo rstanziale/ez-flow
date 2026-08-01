@@ -1,8 +1,8 @@
 import { LibUtil } from '../utils/lib-util';
 import { DefaultWorkReport } from './default-work-report';
-import { Work } from './work';
-import { WorkContext } from './work-context';
-import { WorkReport } from './work-report';
+import type { Work } from './work';
+import type { WorkContext } from './work-context';
+import type { WorkReport } from './work-report';
 import { WorkStatus } from './work-status';
 
 /**

@@ -1,8 +1,8 @@
 import { LibUtil } from '../utils/lib-util';
-import { Predicate } from '../work/predicate';
-import { Work } from '../work/work';
-import { WorkContext } from '../work/work-context';
-import { WorkReport } from '../work/work-report';
+import type { Predicate } from '../work/predicate';
+import type { Work } from '../work/work';
+import type { WorkContext } from '../work/work-context';
+import type { WorkReport } from '../work/work-report';
 import { WorkReportPredicate } from '../work/work-report-predicate';
 import { AbstractWorkFlow } from './abstract-work-flow';
 

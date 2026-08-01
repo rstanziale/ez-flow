@@ -1,9 +1,9 @@
-import { beforeEach, describe, test, expect, vi } from 'vitest';
-import { ConcatWordCount, BrokenWork, ErrorWork } from '../mock';
-import { SequentialFlow } from '../../src/workflow/sequential-flow';
-import { WorkContext } from '../../src/work/work-context';
-import { WorkFlowEngine } from '../../src/engine/work-flow-engine';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
+import type { WorkFlowEngine } from '../../src/engine/work-flow-engine';
 import { WorkFlowEngineBuilder } from '../../src/engine/work-flow-engine-builder';
+import { WorkContext } from '../../src/work/work-context';
+import { SequentialFlow } from '../../src/workflow/sequential-flow';
+import { BrokenWork, ConcatWordCount, ErrorWork } from '../mock';
 
 let workFlowEngine: WorkFlowEngine;
 

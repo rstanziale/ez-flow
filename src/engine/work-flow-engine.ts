@@ -1,6 +1,6 @@
-import { WorkContext } from '../work/work-context';
-import { WorkReport } from '../work/work-report';
-import { WorkFlow } from '../workflow/work-flow';
+import type { WorkContext } from '../work/work-context';
+import type { WorkReport } from '../work/work-report';
+import type { WorkFlow } from '../workflow/work-flow';
 
 /**
  * Defines an interface for a workflow engine

@@ -1,5 +1,5 @@
-import { WorkContext } from './work-context';
-import { WorkStatus } from './work-status';
+import type { WorkContext } from './work-context';
+import type { WorkStatus } from './work-status';
 
 /**
  * Defines a work repot unit

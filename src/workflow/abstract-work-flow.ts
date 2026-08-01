@@ -1,6 +1,6 @@
-import { WorkContext } from '../work/work-context';
-import { WorkReport } from '../work/work-report';
-import { WorkFlow } from './work-flow';
+import type { WorkContext } from '../work/work-context';
+import type { WorkReport } from '../work/work-report';
+import type { WorkFlow } from './work-flow';
 
 /**
  * Defines an abstract workflow

@@ -1,7 +1,7 @@
-import { beforeEach, describe, test, expect } from 'vitest';
+import { beforeEach, describe, expect, test } from 'vitest';
 import { NoOpWork } from '../../src/work/no-op-work';
 import { WorkContext } from '../../src/work/work-context';
-import { WorkReport } from '../../src/work/work-report';
+import type { WorkReport } from '../../src/work/work-report';
 import { WorkStatus } from '../../src/work/work-status';
 
 let work: NoOpWork;

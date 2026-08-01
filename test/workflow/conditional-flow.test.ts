@@ -1,9 +1,9 @@
-import { beforeEach, describe, test, expect, vi } from 'vitest';
-import { AlwaysFalsePredicate, PrintMessageWork } from '../mock';
-import { ConditionalFlow } from '../../src/workflow/conditional-flow';
-import { WorkContext } from '../../src/work/work-context';
-import { WorkFlowEngine } from '../../src/engine/work-flow-engine';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
+import type { WorkFlowEngine } from '../../src/engine/work-flow-engine';
 import { WorkFlowEngineBuilder } from '../../src/engine/work-flow-engine-builder';
+import { WorkContext } from '../../src/work/work-context';
+import { ConditionalFlow } from '../../src/workflow/conditional-flow';
+import { AlwaysFalsePredicate, PrintMessageWork } from '../mock';
 
 let workFlowEngine: WorkFlowEngine;
 
