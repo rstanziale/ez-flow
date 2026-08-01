@@ -1,23 +1,23 @@
-import { describe, test, expect } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import { WorkContext } from '../../src/work/work-context';
 
 let work: WorkContext;
 
 describe('Work context', () => {
   test('actions', () => {
-    const KEY = 'key';
-    const VALUE = 'value';
+    const Key = 'key';
+    const Value = 'value';
     work = new WorkContext();
 
-    work.set(KEY, VALUE);
+    work.set(Key, Value);
     expect(work.asMap().size).toBeGreaterThan(0);
-    expect(work.has(KEY)).toBeTruthy();
+    expect(work.has(Key)).toBeTruthy();
 
-    work.delete(KEY);
+    work.delete(Key);
     expect(work.asMap().size).toBe(0);
 
-    work.set(KEY, VALUE);
-    expect(work.get(KEY)).not.toBeNull();
+    work.set(Key, Value);
+    expect(work.get(Key)).not.toBeNull();
 
     work.clear();
     expect(work.asMap().size).toBe(0);

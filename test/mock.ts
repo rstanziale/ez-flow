@@ -1,10 +1,10 @@
-import { DefaultWorkReport } from '../src/work/default-work-report';
 import { BrokenWorkReport } from '../src/work/broken-work-report';
+import { DefaultWorkReport } from '../src/work/default-work-report';
 import { FailureWorkReport } from '../src/work/failure-work-report';
-import { Predicate } from '../src/work/predicate';
-import { Work } from '../src/work/work';
+import type { Predicate } from '../src/work/predicate';
+import type { Work } from '../src/work/work';
 import { WorkContext } from '../src/work/work-context';
-import { WorkReport } from '../src/work/work-report';
+import type { WorkReport } from '../src/work/work-report';
 import { WorkStatus } from '../src/work/work-status';
 
 export class AlwaysTruePredicate implements Predicate {

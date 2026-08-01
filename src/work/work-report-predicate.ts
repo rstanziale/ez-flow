@@ -1,5 +1,5 @@
-import { Predicate } from './predicate';
-import { WorkReport } from './work-report';
+import type { Predicate } from './predicate';
+import type { WorkReport } from './work-report';
 import { WorkStatus } from './work-status';
 
 /**

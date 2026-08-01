@@ -1,5 +1,5 @@
 import { DefaultWorkReport } from './default-work-report';
-import { WorkContext } from './work-context';
+import type { WorkContext } from './work-context';
 import { WorkStatus } from './work-status';
 
 /**

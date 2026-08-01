@@ -1,5 +1,5 @@
-import { beforeEach, describe, test, expect, vi } from 'vitest';
-import { WorkFlowEngine } from '../../src/engine/work-flow-engine';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
+import type { WorkFlowEngine } from '../../src/engine/work-flow-engine';
 import { WorkFlowEngineBuilder } from '../../src/engine/work-flow-engine-builder';
 import { WorkContext } from '../../src/work/work-context';
 import { RepeatFlow } from '../../src/workflow/repeat-flow';

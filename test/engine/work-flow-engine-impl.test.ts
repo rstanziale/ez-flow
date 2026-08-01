@@ -1,4 +1,12 @@
-import { beforeEach, describe, test, expect } from 'vitest';
+import { beforeEach, describe, expect, test } from 'vitest';
+import type { WorkFlowEngine } from '../../src/engine/work-flow-engine';
+import { WorkFlowEngineBuilder } from '../../src/engine/work-flow-engine-builder';
+import { WorkContext } from '../../src/work/work-context';
+import { WorkStatus } from '../../src/work/work-status';
+import { ConditionalFlow } from '../../src/workflow/conditional-flow';
+import { ParallelFlow } from '../../src/workflow/parallel-flow';
+import { RepeatFlow } from '../../src/workflow/repeat-flow';
+import { SequentialFlow } from '../../src/workflow/sequential-flow';
 import {
   AggregateWordCountsWork,
   CompletedPredicate,
@@ -6,14 +14,6 @@ import {
   PrintWordCount,
   WordCountWork,
 } from '../mock';
-import { ConditionalFlow } from '../../src/workflow/conditional-flow';
-import { ParallelFlow } from '../../src/workflow/parallel-flow';
-import { RepeatFlow } from '../../src/workflow/repeat-flow';
-import { SequentialFlow } from '../../src/workflow/sequential-flow';
-import { WorkContext } from '../../src/work/work-context';
-import { WorkFlowEngine } from '../../src/engine/work-flow-engine';
-import { WorkFlowEngineBuilder } from '../../src/engine/work-flow-engine-builder';
-import { WorkStatus } from '../../src/work/work-status';
 
 let workFlowEngine: WorkFlowEngine;
 

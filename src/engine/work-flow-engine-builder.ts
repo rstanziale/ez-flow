@@ -1,4 +1,4 @@
-import { WorkFlowEngine } from './work-flow-engine';
+import type { WorkFlowEngine } from './work-flow-engine';
 import { WorkFlowEngineImpl } from './work-flow-engine-impl';
 
 /**

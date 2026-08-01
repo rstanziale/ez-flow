@@ -1,6 +1,6 @@
-import { WorkContext } from './work-context';
-import { WorkReport } from './work-report';
-import { WorkStatus } from './work-status';
+import type { WorkContext } from './work-context';
+import type { WorkReport } from './work-report';
+import type { WorkStatus } from './work-status';
 
 /**
  * Defines a default work report implementing the needed interface

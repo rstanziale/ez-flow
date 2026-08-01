@@ -1,4 +1,4 @@
-import { Work } from '../work/work';
+import type { Work } from '../work/work';
 
 /**
  * Defines a workflow entity interface

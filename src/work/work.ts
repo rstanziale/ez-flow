@@ -1,5 +1,5 @@
-import { WorkContext } from './work-context';
-import { WorkReport } from './work-report';
+import type { WorkContext } from './work-context';
+import type { WorkReport } from './work-report';
 
 /**
  * Defines a work unit

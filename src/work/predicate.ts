@@ -1,4 +1,4 @@
-import { WorkReport } from './work-report';
+import type { WorkReport } from './work-report';
 
 /**
  * Defines a general predicate

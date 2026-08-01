@@ -1,7 +1,7 @@
 import { LibUtil } from '../utils/lib-util';
-import { Work } from '../work/work';
-import { WorkContext } from '../work/work-context';
-import { WorkReport } from '../work/work-report';
+import type { Work } from '../work/work';
+import type { WorkContext } from '../work/work-context';
+import type { WorkReport } from '../work/work-report';
 import { WorkStatus } from '../work/work-status';
 import { AbstractWorkFlow } from './abstract-work-flow';
 

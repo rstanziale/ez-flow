@@ -1,11 +1,11 @@
-import { beforeEach, describe, test, expect, vi } from 'vitest';
-import { ContextWork, ErrorWork, PrintDateCount } from '../mock';
-import { ParallelFlow } from '../../src/workflow/parallel-flow';
-import { WorkContext } from '../../src/work/work-context';
-import { WorkFlowEngine } from '../../src/engine/work-flow-engine';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
+import type { WorkFlowEngine } from '../../src/engine/work-flow-engine';
 import { WorkFlowEngineBuilder } from '../../src/engine/work-flow-engine-builder';
-import { ParallelWorkReport } from '../../src/work/parallel-work-report';
+import type { ParallelWorkReport } from '../../src/work/parallel-work-report';
+import { WorkContext } from '../../src/work/work-context';
 import { WorkStatus } from '../../src/work/work-status';
+import { ParallelFlow } from '../../src/workflow/parallel-flow';
+import { ContextWork, ErrorWork, PrintDateCount } from '../mock';
 
 let workFlowEngine: WorkFlowEngine;
 

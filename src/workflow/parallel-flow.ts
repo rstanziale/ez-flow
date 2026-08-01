@@ -1,8 +1,8 @@
 import { LibUtil } from '../utils/lib-util';
 import { ParallelWorkReport } from '../work/parallel-work-report';
-import { Work } from '../work/work';
-import { WorkContext } from '../work/work-context';
-import { WorkReport } from '../work/work-report';
+import type { Work } from '../work/work';
+import type { WorkContext } from '../work/work-context';
+import type { WorkReport } from '../work/work-report';
 import { AbstractWorkFlow } from './abstract-work-flow';
 
 export class ParallelFlow extends AbstractWorkFlow {
