@@ -23,16 +23,16 @@
   "author": "Roberto B. Stanziale",
   "license": "MIT",
   "devDependencies": {
-    "@biomejs/biome": "2.5.6",
-    "@commitlint/cli": "^21.2.1",
-    "@commitlint/config-conventional": "^21.2.0",
-    "@vitest/coverage-v8": "^4.1.10",
+    "@biomejs/biome": "2.6.4",
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
+    "@vitest/coverage-v8": "^5.0.5",
     "husky": "^9.1.7",
-    "lint-staged": "^17.3.0",
+    "lint-staged": "^17.6.0",
     "standard-version": "^9.5.0",
     "typescript": "^7.0.2",
-    "vite": "^8.2.0",
-    "vitest": "^4.1.10"
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
   },
   "peerDependencies": {
     "uuid": "^11.0.0"
