@@ -69,7 +69,7 @@ describe('Sequential flow', () => {
     expect(result).toBe('Hello, World');
   });
 
-  test('test passing with errors', async () => {
+  test('test passing with broken works', async () => {
     const work1 = new ConcatWordCount('Hello');
     const work2 = new BrokenWork();
     const work3 = new ConcatWordCount('World');
@@ -95,7 +95,7 @@ describe('Sequential flow', () => {
     expect(result).not.toBe('Hello, World');
   });
 
-  test('test passing with errors', async () => {
+  test('test passing with error works', async () => {
     const work1 = new ConcatWordCount('Hello');
     const work2 = new ErrorWork();
     const work3 = new ConcatWordCount('World');

@@ -130,7 +130,8 @@ const workflow = SequentialFlow.Builder.newFlow() // flow 4
 const workContext = new WorkContext();
 
 // 3. Run workflow
-const workFlowEngine: WorkFlowEngine = WorkFlowEngineBuilder.newBuilder().build();
+const workFlowEngine: WorkFlowEngine =
+  WorkFlowEngineBuilder.newBuilder().build();
 
 workFlowEngine.run(workflow, workContext).then(
   (finalReport: WorkReport) => {
